@@ -11,9 +11,11 @@ class UserController extends BaseController
         //
     }
 
+    public function dashboard(){
+        return view('dashboard');
+    }
+  
     public function login(){
         return view('login_user');
     }
-
-
 }

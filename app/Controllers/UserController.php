@@ -18,4 +18,8 @@ class UserController extends BaseController
     public function login(){
         return view('login_user');
     }
+
+    public function register(){
+        return view('daftar');
+    }
 }

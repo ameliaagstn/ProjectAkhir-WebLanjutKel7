@@ -6,7 +6,7 @@ body {
 }
 
 header {
-    background-color: #333;
+    background-color: #4B0082;
     color: #fff;
     padding: 20px 0;
 }
@@ -78,7 +78,7 @@ section {
 }
 
 #contact {
-    background-color: #333;
+    background-color: #4B0082;
     color: #fff;
 }
 
@@ -110,7 +110,7 @@ input, textarea {
 
 footer {
     text-align: center;
-    background-color: #333;
+    background-color: #4B0082;
     color: #fff;
     padding: 10px 0;
 }

@@ -8,10 +8,4 @@ class Home extends BaseController
     {
         return view('welcome_message');
     }
-  
-    // public function daftar(){
-    //     return view('daftar');
-    // }
-
-    
 }

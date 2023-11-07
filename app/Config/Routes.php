@@ -8,6 +8,9 @@ use App\Controllers\Home;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
-$routes->get('/daftar','Home::daftar');
+// $routes->get('/login','Home::daftar');
 $routes->get('/dashboard', [UserController::class, 'dashboard']);
 $routes->get('/login', [UserController::class, 'login']);
+$routes->get('/register', [UserController::class, 'register']);
+$routes->get('/admin', [UserController::class, 'admin']);
+$routes->get('/pembeli', [UserController::class, 'pembeli']);

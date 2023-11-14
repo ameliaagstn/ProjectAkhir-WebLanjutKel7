@@ -15,7 +15,7 @@
                 <li><a href="#about">Tentang Kami</a></li>
                 <li><a href="#products">Produk</a></li>
                 <li><a href="#contact">Kontak</a></li>
-                <li><a href="#contact">Masuk</a></li>
+                <li><a href=<?= url_to('login') ?>>Masuk</a></li>
             </ul>
         </nav>
     </header>

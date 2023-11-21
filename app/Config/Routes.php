@@ -24,3 +24,11 @@ $routes->get('/listuser', [AdminController::class, 'index'], ['filter' => 'role:
 $routes->get('/listuser/(:any)/edit', [AdminController::class, 'edit'], ['filter' => 'role:admin']);
 $routes->get('/profile/pembeli', [PembeliController::class, 'pembeli'], ['filter' => 'role:pembeli']);
 $routes->get('listuser/(:any)/profile', [AdminController::class, 'show'], ['filter' => 'role:admin']);
+$routes->get('/penjual/profile', [PenjualController::class, 'profile'], ['filter' => 'role:penjual']);
+$routes->get('/penjual/(:any)/edit', [PenjualController::class, 'edit'], ['filter' => 'role:penjual']);
+$routes->put('/penjual/(:any)', [PenjualController::class, 'update'], ['filter' => 'role:penjual']);
+$routes->get('profile_penjual', 'PenjualController::profile'); 
+$routes->get('/pembeli/profile', [PembeliController::class, 'profile'], ['filter' => 'role:pembeli']);
+$routes->get('/pembeli/(:any)/edit', [PembeliController::class, 'edit'], ['filter' => 'role:pembeli']);
+$routes->put('/pembeli/(:any)', [PembeliController::class, 'update'], ['filter' => 'role:pembeli']);
+$routes->get('profile_pembeli', 'PembeliController::profile'); 

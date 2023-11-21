@@ -27,7 +27,7 @@
             </form>
 
             <a href="#cart" class="fa" style="font-size:30px"> &#xf07a; </a>
-
+            <a href="<?= base_url('penjual/profile') ?>">
             <img class="avatar" src="<?=base_url('assets/img/pentol1.jpg')?>" alt="avatar">
 
         </nav>

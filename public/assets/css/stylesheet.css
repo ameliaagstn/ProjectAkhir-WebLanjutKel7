@@ -77,6 +77,14 @@ section {
     border: none;
 }
 
+.btn-edit {
+  background-color: #4B0082;
+  color: #fff;
+  padding: 20px 10px;
+  text-decoration: none;
+  border: none;
+}
+
 #contact {
     background-color: #4B0082;
     color: #fff;

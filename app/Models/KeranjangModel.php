@@ -6,6 +6,18 @@ use CodeIgniter\Model;
 
 class KeranjangModel extends Model
 {
+
+    public function getKeranjang($id = null){
+        if ($id != null){
+            return $this->select('keranjang.*')->find($id);
+        }
+        return $this->select('keranjang.*')->findAll();
+    }
+    
+    public function updateKeranjang($data, $id){
+        return $this->update($id, $data);
+    }
+
     protected $table            = 'keranjang';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;

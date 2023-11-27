@@ -12,7 +12,21 @@ class KeranjangSeeder extends Seeder
         $KeranjangModel = new keranjangModel();
 
         $KeranjangModel->save([
-            'nama_barang'   => 'Guci Firaun'
+            'nama_barang'   => 'Guci Firaun',
+            'jumlah'   => '1',
+            'total_harga'   => '1000000',
+        ]);
+
+        $KeranjangModel->save([
+            'nama_barang'   => 'sendok Christopher Columbus',
+            'jumlah'   => '1',
+            'total_harga'   => '10222',
+        ]);
+
+        $KeranjangModel->save([
+            'nama_barang'   => 'Bantal hitler',
+            'jumlah'   => '1',
+            'total_harga'   => '120922',
         ]);
 
     }

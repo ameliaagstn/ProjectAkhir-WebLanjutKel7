@@ -6,7 +6,8 @@ use App\Controllers\PembeliController;
 use CodeIgniter\Router\RouteCollection;
 use App\Controllers\PenjualController;
 use App\Controllers\Home;
- 
+use Faker\Provider\ar_EG\Person;
+
 /**
  * @var RouteCollection $routes
  */
@@ -24,3 +25,8 @@ $routes->get('/listuser', [AdminController::class, 'index'], ['filter' => 'role:
 $routes->get('/listuser/(:any)/edit', [AdminController::class, 'edit'], ['filter' => 'role:admin']);
 $routes->get('/profile/pembeli', [PembeliController::class, 'pembeli'], ['filter' => 'role:pembeli']);
 $routes->get('listuser/(:any)/profile', [AdminController::class, 'show'], ['filter' => 'role:admin']);
+
+//keranjang
+$routes->get('/pembeli/keranjang', [PembeliController::class, 'keranjang'], ['filter' => 'role:pembeli']);
+$routes->delete('/pembeli/keranjang/(:any)', [PembeliController::class, 'deleteKeranjang']);
+$routes->get('pembeli/shop', [PembeliController::class, 'shop']);

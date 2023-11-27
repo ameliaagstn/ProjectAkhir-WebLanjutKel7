@@ -10,9 +10,9 @@ class Home extends BaseController
             if (in_groups('admin')) {
                 return view('admin/profile_admin');
             } else if (in_groups('penjual')) {
-                return view('petugas/dashboard_penjual');
+                return view('penjual/dashboard_penjual');
             } else if (in_groups('pembeli')) {
-                return view('pemilih/dashboard');
+                return view('pembeli/dashboard');
             }
         } else {
             return view('welcome_message');

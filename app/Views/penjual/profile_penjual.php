@@ -22,28 +22,28 @@
                 <li><a href="/">Beranda</a></li>
                 <li><a href="/produk">Produk</a></li>
                 <li><a href="/keranjang">Keranjang</a></li>
-                <li><a href="/admin">Profil Pembeli</a></li>
+                <li><a href="/admin">Profil Penjual</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="container">
     <div style="text-align:center;">
-        <h1>Profil Pembeli</h1>
+        <h1>Profil Penjual</h1>
         <div class="buyer-info">
         <?= csrf_field() ?>
-        <?php foreach ($pembelis as $pembeli) : ?>
-        <img src="<?=$pembeli['user_image'] ; ?>" alt="Foto Profil Pembeli" width="200px">
+        <?php foreach ($penjuals as $penjual) : ?>
+        <img src="<?=$penjual['user_image'] ; ?>" alt="Foto Profil Penjual" width="200px">
 
-    <div class="pembeli-item">
+    <div class="penjual-item">
        
-        <h3>Detail Pembeli</h3>
-        <p>Username: <?= $pembeli['username'] ?></p>
-        <p>Nama Lengkap: <?= $pembeli['nama'] ?></p>
-        <p>Email: <?= $pembeli['email'] ?></p>
-        <p>Alamat: <?= $pembeli['alamat'] ?></p>
-        <a class="btn btn-warning" href="<?= base_url('pembeli/' . $pembeli['id'] . '/edit') ?>">Edit</a>
-            <form action="<?= base_url('/profile_pembeli/' .  $pembeli['id']) ?>" method="post">
+        <h3>Detail Penjual</h3>
+        <p>Username: <?= $penjual['username'] ?></p>
+        <p>Nama Lengkap: <?= $penjual['nama'] ?></p>
+        <p>Email: <?= $penjual['email'] ?></p>
+        <p>Alamat: <?= $penjual['alamat'] ?></p>
+        <a class="btn btn-warning" href="<?= base_url('penjual/' . $penjual['id'] . '/edit') ?>">Edit</a>
+            <form action="<?= base_url('/profile_penjual/' .  $penjual['id']) ?>" method="post">
     </div>
 </div>
             </form>

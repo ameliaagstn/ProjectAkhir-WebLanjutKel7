@@ -2,29 +2,81 @@
 
 namespace App\Controllers;
 
+
+
+
 use App\Models\KeranjangModel;
 use App\Controllers\BaseController;
-use SebastianBergmann\Timer\Duration;
 
 class PembeliController extends BaseController
 {
-
+    
+    
     public $db;
     public $builder;
+
     public function index()
     {
-        //
+        return view('pembeli/shop');
     }
 
     public function pembeli(){
         return view('pembeli/profile_pembeli');
+
         }
 
     public function dashboard(){
-            return view('pembeli/dashboard');
+            return view('pembeli/dashboard_pembeli');
         }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         //Ini Controller Buat Keranjang
         public function keranjang(){
             $KeranjangModel = new KeranjangModel();
@@ -55,10 +107,6 @@ class PembeliController extends BaseController
             $builder->where('id', $id);
             $builder->delete();
             return redirect()->to(base_url('/pembeli/keranjang'));
-        }
-
-        public function shop(){
-            return view('pembeli/shop');
         }
 
 }

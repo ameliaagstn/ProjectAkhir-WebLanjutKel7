@@ -2,76 +2,111 @@
 
 namespace App\Controllers;
 
-use App\Models\PembeliModel;
+
+
+
+use App\Models\KeranjangModel;
+use App\Controllers\BaseController;
 
 class PembeliController extends BaseController
 {
-    protected $pembeliModel;
-    public function __construct()
-    {
-        $this->pembeliModel = new PembeliModel();
-    }
+    
+    
+    public $db;
+    public $builder;
 
     public function index()
     {
-        //
+        return view('pembeli/shop');
     }
+
+    public function pembeli(){
+        return view('pembeli/profile_pembeli');
+
+        }
 
     public function dashboard(){
-        return view('pembeli/dashboard_pembeli');
-    }
-    
-    public function profile(){
-        $data['pembelis'] = $this->pembeliModel->getPembeli();
-
-        return view('pembeli/profile_pembeli', $data);
-    }
-
-    public function edit($id){
-        $pembeli = $this->pembeliModel->getPembeli($id);
-    
-        $data = [
-            'title' => 'Edit Pembeli',
-            'pembeli' => $pembeli,
-        ];
-    
-        return view('pembeli/edit_pembeli', $data);
-    }
-    
-    public function update($id){
-        $path = 'assets/upload/img';
-        $foto = $this->request->getFile('user_image');
-    
-        if ($foto->isValid()){
-            $name = $foto->getRandomName();
-
-            if ($foto->move($path, $name)){
-                $foto_path = base_url($path . '/' . $name);
-    
-                $data = [
-                    'username' => $this->request->getVar('username'),
-                    'nama_lengkap' => $this->request->getVar('nama_lengkap'),
-                    'email' => $this->request->getVar('email'),
-                    'alamat' => $this->request->getVar('alamat'),
-                    'user_image' => $foto_path, 
-                ];
-    
-                $result = $this->pembeliModel->updatePembeli($data, $id);
-    
-                if(!$result){
-                    return redirect()->back()->withInput()
-                    ->with('error', 'Gagal menyimpan data');
-                }
-    
-                return redirect()->to(base_url('/profile_pembeli'));
-            } else {
-                return redirect()->back()->withInput()
-                    ->with('error', 'Gagal upload gambar');
-            }
-        } else {
-            return redirect()->back()->withInput()
-                ->with('error', 'File tidak valid');
+            return view('pembeli/dashboard_pembeli');
         }
-    }
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        //Ini Controller Buat Keranjang
+        public function keranjang(){
+            $KeranjangModel = new KeranjangModel();
+            $data = [
+                'keranjang' => $KeranjangModel->getKeranjang()
+                    ];
+            // dd($data);
+            return view('pembeli/keranjang', $data);
+        }
+
+        public function update($id){
+            $KeranjangModel = new KeranjangModel();
+
+            $data = [
+                'nama_barang' => $this->request->getVar('nama_barang'),
+                'jumlah' => $this->request->getVar('jumlah'),
+                'total_harga' => $this->request->getVar('total_harga'),
+            ];
+            $KeranjangModel->update($id, $data);
+            return redirect()->to('/pembeli/keranjang');
+        }
+
+
+        public function deleteKeranjang($id)
+        {
+            $db = \Config\Database::connect();
+            $builder = $db->table('keranjang');
+            $builder->where('id', $id);
+            $builder->delete();
+            return redirect()->to(base_url('/pembeli/keranjang'));
+        }
+
 }

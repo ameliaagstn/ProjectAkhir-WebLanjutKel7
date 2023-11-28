@@ -13,7 +13,7 @@ class AdminController extends BaseController
     {
         $this->userModel = new UserModel();
     }
-    public function index()
+    public function listuser()
     {
         $data = [
             'title' => 'List User',

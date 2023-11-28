@@ -237,6 +237,8 @@
             </div>
         </main>
 
+        <a class="buy-button w-18 p-2" href="<?= base_url('penjual/create') ?>">Tambah Produk</a>
+
         <section id="products">
         <div class="product-card">
             <img src="<?=base_url('assets/img/produk 1.jpg')?>" alt="Barang Antik 1" width="200px">

@@ -6,7 +6,9 @@ use App\Controllers\PembeliController;
 use CodeIgniter\Router\RouteCollection;
 use App\Controllers\PenjualController;
 use App\Controllers\Home;
- 
+use App\Controllers\Invoice;
+use App\Controllers\InvoiceController;
+
 /**
  * @var RouteCollection $routes
  */
@@ -32,3 +34,6 @@ $routes->get('/pembeli/profile', [PembeliController::class, 'profile'], ['filter
 $routes->get('/pembeli/(:any)/edit', [PembeliController::class, 'edit'], ['filter' => 'role:pembeli']);
 $routes->put('/pembeli/(:any)', [PembeliController::class, 'update'], ['filter' => 'role:pembeli']);
 $routes->get('profile_pembeli', 'PembeliController::profile'); 
+$routes->get('/invoice/(:any)/detail_invoice', [InvoiceController::class, 'detail_invoice'], ['filter' => 'role:admin']);
+$routes->delete('/invoice/(:any)', [InvoiceController::class, 'destroy'], ['filter' => 'role:admin']);
+$routes->get('/invoice', [InvoiceController::class, 'list_invoice'], ['filter' => 'role:admin']);

@@ -50,7 +50,7 @@ class PenjualController extends BaseController
     
                 $data = [
                     'username' => $this->request->getVar('username'),
-                    'nama_lengkap' => $this->request->getVar('nama_lengkap'),
+                    'nama' => $this->request->getVar('nama'),
                     'email' => $this->request->getVar('email'),
                     'alamat' => $this->request->getVar('alamat'),
                     'user_image' => $foto_path, 

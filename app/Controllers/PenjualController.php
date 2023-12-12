@@ -4,14 +4,20 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\BarangModel;
+use App\Models\PenjualModel;
+
+// class PenjualController extends BaseController
+// {
+//     ;
+
+//     public function __construct()
 
 class PenjualController extends BaseController
 {
     public $barangModel;
 
-    public function __construct();
-    use App\Models\PenjualModel;
-
+    // public function __construct();
+    // use App\Models\PenjualModel;
     protected $penjualModel;
     public function __construct()
     {
@@ -19,6 +25,8 @@ class PenjualController extends BaseController
     }
 
     public function index()
+
+
     {
         $this->barangModel = new BarangModel();
     }
@@ -40,7 +48,7 @@ class PenjualController extends BaseController
     //     return view('penjual/list_barang');
     // }
     
-<<<<<<< HEAD
+ 
     public function create()
     {   
         $barang = $this->barangModel->getBarang();
@@ -138,13 +146,13 @@ class PenjualController extends BaseController
         ];
 
         if ($foto->isValid()){
-            $foto = $foto->getRandomName();
+            $name = $foto->getRandomName();
             //up img
 
             if($foto->move($path, $foto)){
-                $foto = base_url($path.$foto);
+                $foto_path = base_url($path.$name);
 
-                $data['foto'] = $foto;
+                $data['foto'] = $foto_path;
 
             }
         }
@@ -158,15 +166,14 @@ class PenjualController extends BaseController
 
         return redirect()->to('penjual/list_barang');
     }
-=======
+
     public function profile(){
         $data['penjuals'] = $this->penjualModel->getPenjual();
->>>>>>> 2fe740ceb03b3bf9088bad665e4b28223a0d997b
 
         return view('penjual/profile_penjual', $data);
     }
 
-    public function edit($id){
+    public function edit_profile($id){
         $penjual = $this->penjualModel->getPenjual($id);
     
         $data = [
@@ -177,7 +184,7 @@ class PenjualController extends BaseController
         return view('penjual/edit_penjual', $data);
     }
     
-    public function update($id){
+    public function update_profile($id){
         $path = 'assets/upload/img';
         $foto = $this->request->getFile('user_image');
     
@@ -189,7 +196,7 @@ class PenjualController extends BaseController
     
                 $data = [
                     'username' => $this->request->getVar('username'),
-                    'nama_lengkap' => $this->request->getVar('nama_lengkap'),
+                    'nama' => $this->request->getVar('nama'),
                     'email' => $this->request->getVar('email'),
                     'alamat' => $this->request->getVar('alamat'),
                     'user_image' => $foto_path, 
@@ -214,3 +221,4 @@ class PenjualController extends BaseController
     }
     
 }
+

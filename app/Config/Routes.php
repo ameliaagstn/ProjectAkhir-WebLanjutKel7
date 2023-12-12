@@ -48,6 +48,6 @@ $routes->get('listuser/(:any)/profile', [AdminController::class, 'show'], ['filt
 //keranjang
 $routes->get('/pembeli/keranjang', [PembeliController::class, 'keranjang'], ['filter' => 'role:pembeli']);
 // $routes->match(['get', 'post'], '/pembeli/keranjang', [PembeliController::class, 'keranjang'], ['filter' => 'role:pembeli']);
-
+$routes->post('/add-to-cart/(:num)/(:num)', 'CartController::addToCart/$1/$2');
 $routes->delete('/pembeli/keranjang/(:any)', [PembeliController::class, 'deleteKeranjang']);
 $routes->get('pembeli/shop', [PembeliController::class, 'shop']);

@@ -7,6 +7,7 @@ namespace App\Controllers;
 
 use App\Models\KeranjangModel;
 use App\Controllers\BaseController;
+use App\Models\BarangModel;
 
 class PembeliController extends BaseController
 {
@@ -26,7 +27,9 @@ class PembeliController extends BaseController
         }
 
     public function dashboard(){
-            return view('pembeli/dashboard_pembeli');
+        $BarangModel = new BarangModel();
+        $data['barang'] = $BarangModel->findAll();
+            return view('pembeli/dashboard', $data);
         }
 
 
@@ -76,7 +79,7 @@ class PembeliController extends BaseController
 
 
 
-        
+
         //Ini Controller Buat Keranjang
         public function keranjang(){
             $KeranjangModel = new KeranjangModel();
@@ -85,6 +88,10 @@ class PembeliController extends BaseController
                     ];
             // dd($data);
             return view('pembeli/keranjang', $data);
+        }
+
+        public function tambah(){
+            
         }
 
         public function update($id){
@@ -98,6 +105,7 @@ class PembeliController extends BaseController
             $KeranjangModel->update($id, $data);
             return redirect()->to('/pembeli/keranjang');
         }
+
 
 
         public function deleteKeranjang($id)

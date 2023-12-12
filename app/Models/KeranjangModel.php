@@ -18,6 +18,13 @@ class KeranjangModel extends Model
         return $this->update($id, $data);
     }
 
+    // Add this method to your KeranjangModel
+    public function insertToKeranjang($data)
+    {
+        return $this->insert($data);
+    }
+
+
     protected $table            = 'keranjang';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;

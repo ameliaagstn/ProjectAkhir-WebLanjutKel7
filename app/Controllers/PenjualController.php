@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-<<<<<<< HEAD
 use App\Controllers\BaseController;
 use App\Models\BarangModel;
 
@@ -10,12 +9,9 @@ class PenjualController extends BaseController
 {
     public $barangModel;
 
-    public function __construct()
-=======
-use App\Models\PenjualModel;
+    public function __construct();
+    use App\Models\PenjualModel;
 
-class PenjualController extends BaseController
-{
     protected $penjualModel;
     public function __construct()
     {
@@ -23,7 +19,6 @@ class PenjualController extends BaseController
     }
 
     public function index()
->>>>>>> 2fe740ceb03b3bf9088bad665e4b28223a0d997b
     {
         $this->barangModel = new BarangModel();
     }

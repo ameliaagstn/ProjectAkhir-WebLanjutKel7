@@ -37,6 +37,11 @@ class Barang extends Migration
                 'constraint'        => 100,
             ],
 
+            'stok' =>[
+                'type'              => 'INT',
+                'constraint'        => 1,
+            ],
+
             'created_at'    =>[
                 'type'              => 'DATETIME',
                 'null'              => true,

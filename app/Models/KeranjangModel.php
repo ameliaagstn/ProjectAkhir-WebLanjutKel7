@@ -4,19 +4,37 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class BarangModel extends Model
+class KeranjangModel extends Model
 {
-    protected $table            = 'barang';
+
+    public function getKeranjang($id = null){
+        if ($id != null){
+            return $this->select('keranjang.*')->find($id);
+        }
+        return $this->select('keranjang.*')->findAll();
+    }
+    
+    public function updateKeranjang($data, $id){
+        return $this->update($id, $data);
+    }
+
+    // Add this method to your KeranjangModel
+    public function insertToKeranjang($data)
+    {
+        return $this->insert($data);
+    }
+
+
+    protected $table            = 'keranjang';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-
-    protected $allowedFields    = ['nama_barang', 'deskripsi', 'foto_barang', 'harga' ];
+    protected $allowedFields    = ['nama_barang', 'jumlah','total_harga'];
 
     // Dates
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
@@ -38,26 +56,4 @@ class BarangModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-
-
-    
-    public function getBarang($id = null){
-        if ($id != null){
-            return $this->select('barang.*')->find($id);
-        }
-        return $this->select('barang.*')->findAll();
-    }
-    
-    public function updateBarang($data, $id){
-        return $this->update($id, $data);
-    }
-
-    public function deleteBarang($id){
-        return $this->delete($id);
-    }
-
-    public function saveBarang($data){
-        $this->insert($data);
-    }
 }

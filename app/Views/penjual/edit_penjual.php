@@ -27,9 +27,9 @@
     </div>
 </div>
         <div class="mb-3">
-            <label for="fullname" class="form-label">Nama Lengkap :</label>
+            <label for="nama" class="form-label">Nama Lengkap :</label>
             <input type="text" class="form-control <?php ?>"
-            name="fullname" value="<?= $penjual ['nama'] ?>" id="fullname"   >
+            name="nama" value="<?= $penjual ['nama'] ?>" id="nama"   >
                 <div class="invalid-feedback">
                     <?php ?>
                 </div>

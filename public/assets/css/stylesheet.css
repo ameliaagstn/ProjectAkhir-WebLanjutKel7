@@ -11,6 +11,11 @@ header {
     padding: 20px 0;
 }
 
+.tulisan{
+  margin-left: -10%;
+  margin-top: -5%;
+}
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -21,6 +26,7 @@ nav {
 }
 
 .logo {
+  margin-left: -20%;
     font-size: 24px;
     font-weight: bold;
 }
@@ -122,6 +128,8 @@ input, textarea {
     height: 50px;
     border-radius: 50%;
     float: right;
+    margin-right: -25%;
+    margin-top: -7%;
   }
 
   .carousel {

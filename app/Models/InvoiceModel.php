@@ -4,19 +4,19 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class BarangModel extends Model
+class InvoiceModel extends Model
 {
-    protected $table            = 'barang';
+    protected $table            = 'pesanan';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-
-    protected $allowedFields    = ['nama_barang', 'deskripsi', 'foto_barang', 'harga' ];
+    protected $allowedFields    = ['fullname', 'alamat', 'metode_pengiriman', 'kota', 'kode_pos', 'email',
+    'telfon', 'jumlah_item', 'total_bayar',	'bukti_pembayaran'];
 
     // Dates
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
@@ -39,25 +39,14 @@ class BarangModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-
-
-    
-    public function getBarang($id = null){
+    public function getInvoice($id = null){
         if ($id != null){
-            return $this->select('barang.*')->find($id);
+            return $this->select('pesanan.*')->find($id);
         }
-        return $this->select('barang.*')->findAll();
+        return $this->select('pesanan.*')->findAll();
     }
     
-    public function updateBarang($data, $id){
-        return $this->update($id, $data);
-    }
-
-    public function deleteBarang($id){
+    public function deleteInvoice($id){
         return $this->delete($id);
-    }
-
-    public function saveBarang($data){
-        $this->insert($data);
     }
 }

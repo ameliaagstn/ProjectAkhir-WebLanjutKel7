@@ -9,6 +9,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://v4-alpha.getbootstrap.com/components/carousel/">
     <link rel="stylesheet" href="https://www.w3.org/TR/wai-aria/roles#listbox">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/css/style2.css')?>" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -16,17 +29,17 @@
             <img src="<?=base_url('assets/img/logo_antiqu.png')?>" alt="Logo" width="75px">
             <!-- <div class="logo">Beranda</div> -->
             <ul>
-                <li><a href="#about" style="color: #ffffff">Beranda</a></li>
+                <li><a href="<?= base_url('pembeli/dashboard')?>" style="color: #ffffff">Beranda</a></li>
                 <li><a href="#products" style="color: #ffffff">Pemberitahuan</a></li>
                 <li><a href="#contact" style="color: #ffffff">Bantuan</a></li>
                 <!-- <li><a href="#keranjang" style="color: #ffffff">Keranjang</a></li> -->
             </ul>
 
-            <form class="form-inline my-2 my-lg-0">
+            <!-- <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            </form>
+            </form> -->
 
-            <a href="#cart" class="fa" style="font-size:30px"> &#xf07a; </a>
+            <a href="<?= base_url('/pembeli/keranjang')?>" class="fa" style="font-size:30px"> &#xf07a; </a>
 
             <img class="avatar" src="<?=base_url('assets/img/pentol1.jpg')?>" alt="avatar">
 
@@ -158,31 +171,6 @@
               </div>
             </div>
 
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-              <div class="card">
-                <div class="card-body p-3">
-                  <div class="row">
-                    <div class="col-8">
-                      <div class="numbers">
-                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Produk Terjual</p>
-                        <h5 class="font-weight-bolder">
-                          999 produk
-                        </h5>
-                        <p class="mb-0">
-                          <span class="text-success text-sm font-weight-bolder">+50%</span>
-                          dari tahun lalu
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-4 text-end">
-                      <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                        <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
 
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
               <div class="card">
@@ -237,7 +225,7 @@
             </div>
         </main>
 
-        <section id="products">
+        <!-- <section id="products">
         <div class="product-card">
             <img src="<?=base_url('assets/img/produk 1.jpg')?>" alt="Barang Antik 1" width="200px">
             <h3>Guci Antik</h3>
@@ -253,12 +241,218 @@
         </div>
 
         <div class="product-card">
-            <img src="<?=base_url('assets/image/barang3.jpeg')?>" alt="Barang Antik 2" width="180px">
+            <img src="<?=base_url('assets/img/produk 2.jpg')?>" alt="Barang Antik 2" width="180px">
             <h3>Barang Antik 2</h3>
             <p>Harga: Rp.3.00.000</p>
-            <button class="buy-button">Detail Produk</button>
+            <button class="buy-butKtton>
         </div>
-    </section>
+    </section> -->
+
+    <!-- Shop Product Start -->
+    <div class="col-lg-12 col-md-12">
+                <div class="row pb-3">
+                    <div class="col-12 pb-1">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <form action="">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Cari disini">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text bg-transparent text-primary">
+                                            <i class="fa fa-search"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </div>
+                    <?php foreach ($barang as $barang) : ?>
+                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                        <div class="card product-item border-0 mb-4">
+                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img class="img-fluid w-100" src="<?=base_url('assets/img/produk 1.jpg')?>" alt="">
+                            </div>
+                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 class="text-truncate mb-3"><?= $barang['nama_barang'];?></h6>
+                                <div class="d-flex justify-content-center">
+                                    <h6>Rp.<?= number_format($barang['harga'],0,',','.') ;?></h6><h6 class="text-muted ml-2"></h6>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Detail</a>
+                                <a href="#" class="btn btn-sm text-primary p-0 add-to-cart-btn"
+                                    data-product-id="<?= $barang['id']; ?>"
+                                    data-quantity="1"
+                                    onclick="addToCart(this)">
+                                        <i class="fas fa-shopping-cart text-primary mr-1"></i>
+                                </a>                                
+            <?php
+                                // anchor('PembeliController/tambah'.$barang['id'],'<i class="fas fa-shopping-cart text-primary mr-1"></i>')
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                    <!-- <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                        <div class="card product-item border-0 mb-4">
+                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img class="img-fluid w-100" src="<?=base_url('assets/img/produk 2.jpg')?>" alt="">
+                            </div>
+                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 class="text-truncate mb-3">Telephone tahun 1940</h6>
+                                <div class="d-flex justify-content-center">
+                                    <h6>Rp. 3.000.000</h6><h6 class="text-muted ml-2"></h6>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Detail</a>
+                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Tambah ke keranjang</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                        <div class="card product-item border-0 mb-4">
+                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img class="img-fluid w-100" src="<?=base_url('assets/img/produk 2.jpg')?>" alt="">
+                            </div>
+                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 class="text-truncate mb-3">Telephone tahun 1940</h6>
+                                <div class="d-flex justify-content-center">
+                                    <h6>Rp. 3.000.000</h6><h6 class="text-muted ml-2"></h6>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Detail</a>
+                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Tambah ke keranjang</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                        <div class="card product-item border-0 mb-4">
+                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img class="img-fluid w-100" src="<?=base_url('assets/img/produk 2.jpg')?>" alt="">
+                            </div>
+                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 class="text-truncate mb-3">Telephone tahun 1940</h6>
+                                <div class="d-flex justify-content-center">
+                                    <h6>Rp. 3.000.000</h6><h6 class="text-muted ml-2"></h6>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Detail</a>
+                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Tambah ke keranjang</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                        <div class="card product-item border-0 mb-4">
+                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img class="img-fluid w-100" src="<?=base_url('assets/img/produk 2.jpg')?>" alt="">
+                            </div>
+                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 class="text-truncate mb-3">Telephone tahun 1940</h6>
+                                <div class="d-flex justify-content-center">
+                                    <h6>Rp. 3.000.000</h6><h6 class="text-muted ml-2"></h6>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Detail</a>
+                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Tambah ke keranjang</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                        <div class="card product-item border-0 mb-4">
+                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img class="img-fluid w-100" src="<?=base_url('assets/img/produk 2.jpg')?>" alt="">
+                            </div>
+                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 class="text-truncate mb-3">Telephone tahun 1940</h6>
+                                <div class="d-flex justify-content-center">
+                                    <h6>Rp. 3.000.000</h6><h6 class="text-muted ml-2"></h6>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Detail</a>
+                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Tambah ke keranjang</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                        <div class="card product-item border-0 mb-4">
+                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img class="img-fluid w-100" src="<?=base_url('assets/img/produk 2.jpg')?>" alt="">
+                            </div>
+                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 class="text-truncate mb-3">Telephone tahun 1940</h6>
+                                <div class="d-flex justify-content-center">
+                                    <h6>Rp. 3.000.000</h6><h6 class="text-muted ml-2"></h6>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Detail</a>
+                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Tambah ke keranjang</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                        <div class="card product-item border-0 mb-4">
+                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img class="img-fluid w-100" src="<?=base_url('assets/img/produk 2.jpg')?>" alt="">
+                            </div>
+                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 class="text-truncate mb-3">Telephone tahun 1940</h6>
+                                <div class="d-flex justify-content-center">
+                                    <h6>Rp. 3.000.000</h6><h6 class="text-muted ml-2"></h6>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Detail</a>
+                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Tambah ke keranjang</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                        <div class="card product-item border-0 mb-4">
+                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img class="img-fluid w-100" src="<?=base_url('assets/img/produk 2.jpg')?>" alt="">
+                            </div>
+                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 class="text-truncate mb-3">Telephone tahun 1940</h6>
+                                <div class="d-flex justify-content-center">
+                                    <h6>Rp. 3.000.000</h6><h6 class="text-muted ml-2"></h6>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Detail</a>
+                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Tambah ke keranjang</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 pb-1">
+                        <nav aria-label="Page navigation">
+                          <ul class="pagination justify-content-center mb-3">
+                            <li class="page-item disabled">
+                              <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                              </a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                              <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div> -->
+            <!-- Shop Product End -->
      
     <br><br><br>
 
@@ -273,5 +467,37 @@
         </div>
     </div>
     </footer>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+    <script src="<?=base_url('assets/js/main.js')?>"></script>
+    <script>
+    function addToCart(anchor) {
+        event.preventDefault();
+
+        var productId = anchor.getAttribute('data-product-id');
+        var quantity = anchor.getAttribute('data-quantity');
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/add-to-cart/' + encodeURIComponent(productId) + '/' + quantity, true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    alert('Item added to cart successfully!');
+                } else {
+                    alert('Error adding item to cart.');
+                }
+            }
+        };
+        xhr.send();
+    }
+</script>
 </body>
 </html>

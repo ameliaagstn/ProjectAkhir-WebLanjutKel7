@@ -18,8 +18,9 @@
           <td>No</td>
           <td>Nama Barang</td>
           <td>Deskripsi</td>
-          <td>Foto Barang</td>
+          <td>Foto</td>
           <td>Harga</td>
+          <td>Aksi</td>
         </tr>
       </thead>
       <tbody>
@@ -30,15 +31,16 @@
             <td><?= $no++ ?></td>
             <td><?= $barang['nama_barang'] ?></td>
             <td><?= $barang['deskripsi'] ?></td>
-            <td><?= $barang['foto_barang'] ?></td>
+            <td><img src="<?= $barang['foto_barang'] ?>" alt="" width="100px"></td>
             <td><?= $barang['harga'] ?></td>
             <td>
-                <a class="btn btn-warning" href="<?= base_url('penjual/list_barang' . $barang['id'] . '/edit') ?>">Edit</a>
-                <form action="<?= base_url('penjual/list_barang' .  $user['id']) ?>" method="post">
-                <input type="hidden" name="_method" value="DELETE">
-                <?= csrf_field() ?>
-                <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
+            
+            <a class="btn btn-warning" href="<?= base_url('/list_barang/' . $barang['id'] . '/edit_barang') ?>">Edit</a>
+            <form action="<?= base_url('/list_barang/' .  $barang['id']) ?>" method="post">
+              <input type="hidden" name="_method" value="DELETE">
+              <?= csrf_field() ?>
+              <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
             </td>
           </tr>
         <?php }
@@ -48,4 +50,6 @@
   </div>
 </div>
 
+<br><br><br>
+<br><br><br>
 <?= $this->endSection()?>

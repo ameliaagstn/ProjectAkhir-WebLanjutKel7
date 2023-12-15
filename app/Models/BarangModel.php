@@ -15,7 +15,7 @@ class BarangModel extends Model
     protected $allowedFields    = ['nama_barang', 'deskripsi', 'foto_barang', 'harga' ];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
@@ -52,6 +52,10 @@ class BarangModel extends Model
 
     public function deleteBarang($id){
         return $this->delete($id);
+    }
+
+    public function saveBarang($data){
+        $this->insert($data);
     }
 }
 

@@ -34,101 +34,6 @@
 </div>
     </header>
 
-    <!-- <div id="carouselId" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselId" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselId" data-slide-to="1" class="active"></li>
-            <li data-target="#carouselId" data-slide-to="2" class="active"></li>
-        </ol>
-
-        <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="assets/image/barang1.jpg" alt="First slide"
-                class="img-fluid" style="object-fit:cover;width:100%;height:500px;">
-            </div>
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="assets/image/barang2.jpg" alt="Second slide"
-                class="img-fluid" style="object-fit:cover;width:100%;height:500px;">
-            </div>
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="assets/image/barang4.jpg" alt="Third slide"
-                class="img-fluid" style="object-fit:cover;width:100%;height:500px;">
-            </div>
-        </div>
-
-        <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-
-        <a class="carousel-control-next" href="#carouselId" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div> -->
-
-    
-
-    <!--<section id="">
-         <center>
-            <div id="carouselId" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselId" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselId" data-slide-to="1" class="active"></li>
-                    <li data-target="#carouselId" data-slide-to="2" class="active"></li> 
-                </ol>
-
-                <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="assets/image/barang1.jpg" alt="First slide"
-                        class="img-fluid" style="object-fit:cover;width:100%;height:500px;">
-                    </div>
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="assets/image/barang2.jpg" alt="Second slide"
-                        class="img-fluid" style="object-fit:cover;width:100%;height:500px;">
-                    </div>
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="assets/image/barang4.jpeg" alt="Third slide"
-                        class="img-fluid" style="object-fit:cover;width:100%;height:500px;">
-                    </div>
-                </div>
-
-                <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-
-                <a class="carousel-control-next" href="#carouselId" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </center>
-
-                <section id="products">
-        <div class="product-card">
-            <img src="..." alt="Barang Antik 1" width="200px">
-            <h3>Guci Antik</h3>
-            <p>Harga: Rp.2.500.000</p>
-            <button class="buy-button">Beli Sekarang</button>
-        </div>
-
-        <div class="product-card">
-            <img src="..." alt="Barang Antik 2" width="200px">
-            <h3>Telepon Antik</h3>
-            <p>Harga: Rp.1.500.000</p>
-            <button class="buy-button">Beli Sekarang</button>
-        </div>
-
-        <div class="product-card">
-            <img src="..." alt="Barang Antik 2" width="180px">
-            <h3>Barang Antik 2</h3>
-            <p>Harga: Rp.3.00.000</p>
-            <button class="buy-button">Beli Sekarang</button>
-        </div>
-    </section>
-    </section>-->
-
     <main class="main-content position-relative border-radius-lg ">
     <div class="container-fluid py-4">
           <div class="row">
@@ -237,7 +142,8 @@
             </div>
         </main>
 
-        <a class="buy-button w-18 p-2" href="<?= base_url('penjual/create') ?>">Tambah Produk</a>
+        <a class="buy-button w-18 p-2" href="<?= base_url('penjual/create') ?>">Tambah Produk</a><br><br>
+        <a class="buy-button w-18 p-2" href="<?= base_url('penjual/list_barang') ?>">List Produk</a>
 
         <section id="products">
         <div class="product-card">

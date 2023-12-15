@@ -10,7 +10,7 @@
 > 
 
 <?php $nama_barang = session()->getFlashdata('nama_barang');  ?>
-        <form action="<?= base_url('penjual/create') ?>" method="post">
+        <form action="<?= base_url('penjual/tambah') ?>" method="post">
             <h3 style="text-align:center;">Masukkan Data Barang</h3>
             
             <div class="mb-3 row d-flex justify-content-center">
@@ -28,7 +28,6 @@
                     <input name="deskripsi" type="text" id="deskripsi"
                     class="form-control"  
                      value="<?= old('deskripsi') ?>" >
-                    
                 </div>
             </div>
 
@@ -50,10 +49,19 @@
                 </div>
             </div>
 
+            <!-- <div class="form-group row">
+                <label class="col-sm-3">Status</label>
+                    <select class="form-control col-sm-9" name="status">
+                        <option value="" disabled selected>Pilih Status</option>
+                        <option <?php //if($hasil['status'] == 'Tersedia'){ echo 'selected';}?>>Tersedia</option>
+                        <option  <?php //if($hasil['status'] == 'Tidak Tersedia'){ echo 'selected';}?>>Tidak Tersedia</option>
+                    </select>
+            </div> -->
+
             <div style='margin-top:50px'></div>
             <div class="text-center">
-                <!-- <button type="submit" class="btn btn-primary w-25 p-2">Submit</button> -->
-                <a type="submit" class="btn btn-primary w-25 p-2" href="<?= base_url('penjual/list_barang') ?>">Submit</a>
+                <button type="submit" class="btn btn-primary w-25 p-2">Submit</button>
+                
             </div><br>
             
 

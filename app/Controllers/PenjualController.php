@@ -2,28 +2,24 @@
 
 namespace App\Controllers;
 
-<<<<<<< HEAD
+
 use App\Controllers\BaseController;
 use App\Models\BarangModel;
-
-class PenjualController extends BaseController
-{
-    public $barangModel;
-
-    public function __construct()
-=======
 use App\Models\PenjualModel;
 
 class PenjualController extends BaseController
 {
+    public $barangModel;
     protected $penjualModel;
+
     public function __construct()
     {
         $this->penjualModel = new PenjualModel();
+        $this->barangModel = new BarangModel();
     }
 
     public function index()
->>>>>>> 2fe740ceb03b3bf9088bad665e4b28223a0d997b
+
     {
         $this->barangModel = new BarangModel();
     }
@@ -41,11 +37,16 @@ class PenjualController extends BaseController
         return view('penjual/dashboard_penjual');
     }
 
-    // public function list_barang(){
-    //     return view('penjual/list_barang');
-    // }
+    public function list_barang()
+    {
+        $data = [
+            'title' => 'List User',
+            'barang' => $this->barangModel->getBarang(),
+
+        ];
+        return view('penjual/list_barang', $data);
+    }
     
-<<<<<<< HEAD
     public function create()
     {   
         $barang = $this->barangModel->getBarang();
@@ -88,35 +89,49 @@ class PenjualController extends BaseController
         ->with ('success', 'Berhasil menghapus barang');
     }
 
-    public function store(){
-        if($this->request->getVar('nama_barang') != ''){
-            $barang_select = $this->barangModel->where('id', $this->request->getVar('nama_barang'))->first();
-            $nama_barang = $barang_select['nama_barang'];
-        }else{
-            $nama_barang = '';
-        }
+    public function tambah(){
 
+        // if($this->request->getVar('nama_barang') != ''){
+        //     $barang_select = $this->barangModel->where('id', $this->request->getVar('nama_barang'))->first();
+        //     $nama_barang = $barang_select['nama_barang'];
+        // }else{
+        //     $nama_barang = '';
+        // }
+
+        $path = 'assets/uploads/img/';
+        $foto = $this->request->getFile('foto_barang');
+        $nama_foto = $foto->getRandomName();
+
+        $nama_barang = $this->request->getVar('nama_barang');
         // validation
         if(!$this->validate([
             'nama_barang' => 'required|alpha_space',
-            'id' => 'required|is_unique[barang.id]|integer|min_length[5]',
+            // 'id' => 'required|is_unique[barang.id]|integer|min_length[5]',
         ])){
 
             session()->setFlashdata('nama_barang');
             return redirect()->back()->withInput()->with('nama_barang', $nama_barang);
         }
 
+        if($foto->move($path, $nama_foto)){
+            $foto = base_url($path.$nama_foto);
+        }
+
         // save data
         $this->barangModel->saveBarang([
             'nama_barang' => $this->request->getVar('nama_barang'),
-            'id' => $this->request->getVar('id'),
+            // 'id' => $this->request->getVar('id'),
+            'deskripsi' => $this->request->getVar('deskripsi'),
+            'foto_barang' => $this->request->getVar('foto_barang'),
             'harga' => $this->request->getVar('harga'),
         ]);
+
+        
 
         // show to profile page...
         $data = [
             'nama_barang' => $this->request->getVar('nama_barang'),
-            'id' => $this->request->getVar('id'),
+            // 'id' => $this->request->getVar('id'),
             // 'nama_barang' => $nama_barang,
             'title' => 'Barang'
         ];
@@ -125,31 +140,32 @@ class PenjualController extends BaseController
     }
 
     public function update($id){
-        if($this->request->getVar('nama_barang') != ''){
-            $barang_select = $this->barangModel->where('id', $this->request->getVar('nama_barang'))->first();
-            $nama_barang = $barang_select['barang'];
-        }else{
-            $nama_barang = '';
-        }
+        // if($this->request->getVar('nama_barang') != ''){
+        //     $barang_select = $this->barangModel->where('id', $this->request->getVar('nama_barang'))->first();
+        //     $nama_barang = $barang_select['barang'];
+        // }else{
+        //     $nama_barang = '';
+        // }
 
         $path = 'assets/uploads/img/';
-        $foto = $this->request->getFile('foto');
+        $foto = $this->request->getFile('foto_barang');
 
         $data = [
             'nama_barang' => $this->request->getVar('nama_barang'),
             'id' => $this->request->getVar('id'),
+            // 'foto_barang' => $this->request->getVar('foto_barang'),
             'deskripsi' => $this->request->getVar('deskripsi'),
             'harga' => $this->request->getVar('harga'),
         ];
 
         if ($foto->isValid()){
-            $foto = $foto->getRandomName();
+            $name = $foto->getRandomName();
             //up img
 
-            if($foto->move($path, $foto)){
-                $foto = base_url($path.$foto);
+            if($foto->move($path, $name)){
+                $foto_path = base_url($path.$name);
 
-                $data['foto'] = $foto;
+                $data['foto_barang'] = $foto_path;
 
             }
         }
@@ -161,61 +177,61 @@ class PenjualController extends BaseController
             ->with('error', 'Gagal Menyimpan Data!');
         }
 
-        return redirect()->to('penjual/list_barang');
+        return redirect()->to(base_url('/list_barang'));
     }
-=======
+
     public function profile(){
         $data['penjuals'] = $this->penjualModel->getPenjual();
->>>>>>> 2fe740ceb03b3bf9088bad665e4b28223a0d997b
 
         return view('penjual/profile_penjual', $data);
     }
 
-    public function edit($id){
-        $penjual = $this->penjualModel->getPenjual($id);
+    // public function edit($id){
+    //     $penjual = $this->penjualModel->getPenjual($id);
     
-        $data = [
-            'title' => 'Edit Penjual',
-            'penjual' => $penjual, // Ensure to pass $penjual to the view
-        ];
+    //     $data = [
+    //         'title' => 'Edit Penjual',
+    //         'penjual' => $penjual, // Ensure to pass $penjual to the view
+    //     ];
     
-        return view('penjual/edit_penjual', $data);
-    }
-    
-    public function update($id){
-        $path = 'assets/upload/img';
-        $foto = $this->request->getFile('user_image');
-    
-        if ($foto->isValid()){
-            $name = $foto->getRandomName();
-
-            if ($foto->move($path, $name)){
-                $foto_path = base_url($path . '/' . $name);
-    
-                $data = [
-                    'username' => $this->request->getVar('username'),
-                    'nama_lengkap' => $this->request->getVar('nama_lengkap'),
-                    'email' => $this->request->getVar('email'),
-                    'alamat' => $this->request->getVar('alamat'),
-                    'user_image' => $foto_path, 
-                ];
-    
-                $result = $this->penjualModel->updatePenjual($data, $id);
-    
-                if(!$result){
-                    return redirect()->back()->withInput()
-                    ->with('error', 'Gagal menyimpan data');
-                }
-    
-                return redirect()->to(base_url('/profile_penjual'));
-            } else {
-                return redirect()->back()->withInput()
-                    ->with('error', 'Gagal upload gambar');
-            }
-        } else {
-            return redirect()->back()->withInput()
-                ->with('error', 'File tidak valid');
-        }
-    }
-    
+    //     return view('penjual/edit_penjual', $data);
+    // }
 }
+    
+//     public function update($id){
+//         $path = 'assets/upload/img';
+//         $foto = $this->request->getFile('user_image');
+    
+//         if ($foto->isValid()){
+//             $name = $foto->getRandomName();
+
+//             if ($foto->move($path, $name)){
+//                 $foto_path = base_url($path . '/' . $name);
+    
+//                 $data = [
+//                     'username' => $this->request->getVar('username'),
+//                     'nama_lengkap' => $this->request->getVar('nama_lengkap'),
+//                     'email' => $this->request->getVar('email'),
+//                     'alamat' => $this->request->getVar('alamat'),
+//                     'user_image' => $foto_path, 
+//                 ];
+    
+//                 $result = $this->penjualModel->updatePenjual($data, $id);
+    
+//                 if(!$result){
+//                     return redirect()->back()->withInput()
+//                     ->with('error', 'Gagal menyimpan data');
+//                 }
+    
+//                 return redirect()->to(base_url('/profile_penjual'));
+//             } else {
+//                 return redirect()->back()->withInput()
+//                     ->with('error', 'Gagal upload gambar');
+//             }
+//         } else {
+//             return redirect()->back()->withInput()
+//                 ->with('error', 'File tidak valid');
+//         }
+//     }
+    
+// }

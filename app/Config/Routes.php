@@ -24,15 +24,18 @@ $routes->get('/listuser', [AdminController::class, 'listuser'], ['filter' => 'ro
 $routes->get('/listuser/(:any)/edit', [AdminController::class, 'edit'], ['filter' => 'role:admin']);
 $routes->get('/profile/pembeli', [PembeliController::class, 'pembeli'], ['filter' => 'role:pembeli']);
 $routes->get('listuser/(:any)/profile', [AdminController::class, 'show'], ['filter' => 'role:admin']);
-<<<<<<< HEAD
 
 // $routes->get('/penjual/create', [PenjualController::class, 'create'], ['filter' => 'role:penjual']);
-$routes->match(['get', 'post'], '/penjual/create', [PenjualController::class, 'create'], ['filter' => 'role:penjual']);
-$routes->post('/penjual/store', [PenjualController::class, 'store'], ['filter' => 'role:penjual']);
-$routes->get('/penjual/list_barang', [PenjualController::class, 'update'], ['filter' => 'role:penjual']);
-$routes->delete('/penjual/list_barang', [PenjualController::class, 'destroy'], ['filter' => 'role:penjual']);
+// $routes->match(['get', 'post'], '/penjual/create/(:any)', [PenjualController::class, 'create'], ['filter' => 'role:penjual']);
+$routes->get('/penjual/create', [PenjualController::class, 'create'], ['filter' => 'role:penjual']);
+$routes->post('/penjual/tambah', [PenjualController::class, 'tambah'], ['filter' => 'role:penjual']);
+$routes->get('/penjual/list_barang/(:any)', [PenjualController::class, 'update'], ['filter' => 'role:penjual']);
+$routes->get('/penjual/list_barang', [PenjualController::class, 'list_barang'], ['filter' => 'role:penjual']);
+$routes->put('/list_barang/(:any)/edit_barang', [PenjualController::class, 'edit'], ['filter' => 'role:penjual']);
+$routes->delete('/list_barang/(:any)', [PenjualController::class, 'destroy'], ['filter' => 'role:penjual']);
+// $routes->put('/penjual/list_barang/(:any)', [PenjualController::class, 'update'], ['filter' => 'role:penjual']);
 // $routes->match(['get', 'post'],'/kelas/store', [KelasController::class, 'store'], ['filter' => 'role:penjual']);
-=======
+
 $routes->get('/penjual/profile', [PenjualController::class, 'profile'], ['filter' => 'role:penjual']);
 $routes->get('/penjual/(:any)/edit', [PenjualController::class, 'edit'], ['filter' => 'role:penjual']);
 $routes->put('/penjual/(:any)', [PenjualController::class, 'update'], ['filter' => 'role:penjual']);
@@ -41,4 +44,4 @@ $routes->get('/pembeli/profile', [PembeliController::class, 'profile'], ['filter
 $routes->get('/pembeli/(:any)/edit', [PembeliController::class, 'edit'], ['filter' => 'role:pembeli']);
 $routes->put('/pembeli/(:any)', [PembeliController::class, 'update'], ['filter' => 'role:pembeli']);
 $routes->get('profile_pembeli', 'PembeliController::profile'); 
->>>>>>> 2fe740ceb03b3bf9088bad665e4b28223a0d997b
+
